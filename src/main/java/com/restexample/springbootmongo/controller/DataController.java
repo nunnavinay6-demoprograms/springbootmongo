@@ -35,10 +35,18 @@ public class DataController {
 	@GetMapping(value = "/getData", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<EmpData> getData() {
-		log.info("Inside getData");
+		//log.info("Inside getData");
+		System.out.println("inside ");
 		return config.getDataList();
 	}
+	
 
+	@GetMapping(value = "/heathcheck")
+	public String getHeathStats()
+	{
+		return "success";
+	}
+	
 	@GetMapping(value = "/getEmployees", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<EmpData> getEmpData() {
@@ -91,7 +99,7 @@ public class DataController {
 
 	@GetMapping(value = "/getEmployee/{id}")
 	public EmpData getEmployeeData(@PathVariable String id) {
-		log.info("Inside Employee data: {}", id);
+		log.error("Inside Employee data: {}", id);
 		EmpData data = new EmpData();
 		if (id != null && !id.isEmpty()) {
 			try {
